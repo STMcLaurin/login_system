@@ -1,6 +1,6 @@
 # Login System
 
-A simple login system with user registration, login, and dashboard functionality. This project is built using HTML, CSS, JavaScript, PHP, and MySQL.
+A simple login system with user registration, login, and dashboard functionality. This project is built using HTML, CSS, & JavaScript.
 
 ## Features
 
@@ -15,8 +15,6 @@ A simple login system with user registration, login, and dashboard functionality
 - HTML
 - CSS
 - JavaScript
-- PHP
-- MySQL
 
 ## Installation
 
