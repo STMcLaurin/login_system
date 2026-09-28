@@ -2,65 +2,190 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f7fb">
+    <title>Sign in</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        :root {
+            color-scheme: light;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: #172033;
+            background: #f5f7fb;
+            font-synthesis: none;
+            text-rendering: optimizeLegibility;
         }
 
-        .container {
-            text-align: center;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        * { box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            padding: 32px 20px;
+            background:
+                radial-gradient(ellipse at 12% 14%, rgba(91, 108, 245, .12), transparent 32%),
+                radial-gradient(ellipse at 90% 88%, rgba(49, 183, 163, .10), transparent 30%),
+                #f5f7fb;
         }
+
+        .login-card {
+            width: min(100%, 440px);
+            padding: 44px;
+            border: 1px solid #e8ebf2;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 24px 70px rgba(28, 39, 67, .10);
+        }
+
+        .brand-mark {
+            width: 46px;
+            height: 46px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 30px;
+            border-radius: 14px;
+            color: white;
+            background: linear-gradient(135deg, #6475f5, #4858dc);
+            box-shadow: 0 8px 18px rgba(83, 99, 231, .24);
+        }
+
+        .brand-mark svg { width: 23px; height: 23px; }
 
         h1 {
-            color: #333;
-            margin-bottom: 20px;
+            margin: 0;
+            color: #172033;
+            font-size: 29px;
+            letter-spacing: -1px;
         }
 
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+        .intro {
+            margin: 9px 0 30px;
+            color: #747d90;
+            font-size: 15px;
+            line-height: 1.6;
         }
 
-        .grid-item {
-            background-color: #007BFF;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+        .field { margin-bottom: 19px; }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #30394d;
+            font-size: 13px;
+            font-weight: 650;
         }
 
-        .grid-item a {
-            color: #fff;
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            height: 48px;
+            padding: 0 14px;
+            border: 1px solid #dfe3ec;
+            border-radius: 9px;
+            outline: none;
+            color: #172033;
+            background: #fff;
+            font: inherit;
+            font-size: 14px;
+            transition: border-color .2s, box-shadow .2s;
+        }
+
+        input::placeholder { color: #a3aabb; }
+
+        input:focus {
+            border-color: #6675ed;
+            box-shadow: 0 0 0 3px rgba(102, 117, 237, .14);
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin: 3px 0 24px;
+            font-size: 13px;
+        }
+
+        .remember {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #667085;
+            cursor: pointer;
+        }
+
+        .remember input { accent-color: #5869e8; }
+
+        a {
+            color: #5364df;
+            font-weight: 600;
             text-decoration: none;
-            font-weight: bold;
         }
 
-        .grid-item:hover {
-            background-color: #0056b3;
+        a:hover { text-decoration: underline; }
+
+        .submit-button {
+            width: 100%;
+            min-height: 49px;
+            border: 0;
+            border-radius: 9px;
+            color: #fff;
+            background: #5869e8;
+            font: inherit;
+            font-size: 14px;
+            font-weight: 650;
+            cursor: pointer;
+            box-shadow: 0 7px 15px rgba(83, 99, 231, .20);
+            transition: background .2s, transform .2s;
+        }
+
+        .submit-button:hover { background: #4758d4; transform: translateY(-1px); }
+        .submit-button:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(83, 99, 231, .35);
+            outline-offset: 3px;
+        }
+
+        .signup {
+            margin: 25px 0 0;
+            color: #747d90;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        @media (max-width: 480px) {
+            .login-card { padding: 34px 25px; border-radius: 16px; }
+            h1 { font-size: 26px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to the Login System</h1>
-        <div class="grid-container">
-            <div class="grid-item"><a href="register.html">Register</a></div>
-            <div class="grid-item"><a href="login.html">Login</a></div>
+    <main class="login-card">
+        <div class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 3 20 6v5.5c0 4.8-3.4 8.2-8 9.5-4.6-1.3-8-4.7-8-9.5V6l8-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="m8.5 12 2.2 2.2 4.8-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
         </div>
-    </div>
+        <h1>Welcome back</h1>
+        <p class="intro">Sign in to your account to continue.</p>
+
+        <form action="login.html" method="get">
+            <div class="field">
+                <label for="email">Email address</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+            </div>
+            <div class="field">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required>
+            </div>
+            <div class="form-options">
+                <label class="remember"><input type="checkbox" name="remember"> Remember me</label>
+                <a href="forgot-password.html">Forgot password?</a>
+            </div>
+            <button class="submit-button" type="submit">Sign in</button>
+        </form>
+
+        <p class="signup">Don't have an account? <a href="register.html">Create account</a></p>
+    </main>
 </body>
 </html>
